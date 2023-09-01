@@ -72,7 +72,7 @@
     --card-border-rgb: 200, 200, 200;
   }
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 * {
   box-sizing: border-box;
   padding: 0;
@@ -99,7 +99,16 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+.text_center{
+  text-align: center;
+}
+.footer_text{
+  color: #f2f2f2;
+  font-size: 20px;
+  font-weight: 500;
+  padding-block: 10px;
+  background-color: #242526;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
