@@ -43,6 +43,28 @@ app.delete('/deleteproduct/:id',async (req, res) =>{
         const products = await Product.deleteOne({_id:req.params.id})
         res.send(products);
 })
+app.get('/product/:id', async (req, res) =>{  
+    const products = await Product.findOne({_id:req.params.id})
+    res.send(products);
+})
+app.put('/updateproduct/:id',async (req, res) =>{
+    const products = await Product.updateOne(
+        {_id:req.params.id},
+        {$set:req.body}
+        )
+        res.send(products)
+})
+app.get('/search/:key',async (req, res) =>{
+    const products = await Product.findOne({
+        "$or":[
+           {name:{$regex:req.params.key}},
+           {price:{$regex:req.params.key}},
+           {category:{$regex:req.params.key}},
+           {company:{$regex:req.params.key}}
+        ]
+    })
+    res.send(products)
+})
 
 app.listen(5500)
 

@@ -26,7 +26,7 @@ export default function Header(){
             <>
              <li><Link href="/pages/productlist">Products</Link></li>
             <li><Link href="/pages/addproduct">Add Products</Link></li>
-            <li><Link href="#">Update Products</Link></li>
+            <li><Link href="/pages/updateproduct">Update Products</Link></li>
             <li><Link href="/pages/profile">Profile</Link></li>
            <li><Link href='/pages/signup' onClick={navSignup}>Logout ({JSON.parse(login).name})</Link></li>
            </>
