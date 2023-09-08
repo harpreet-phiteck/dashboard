@@ -97,7 +97,7 @@ function verifyToken(req,res,next) {
         res.status(403).send({result:'Please add token with header Authorization'});
     }
 }
-const server = process.env.Port || 5500
-app.listen(server)
+
+app.listen(6000)
 
 
