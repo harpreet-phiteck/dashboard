@@ -23,9 +23,11 @@ export default function Signup(){
             }
         });
         const response = await result.json(); 
-        localStorage.setItem("user",JSON.stringify(response));
-        console.log(response)
-        response.result? "":router.push('/pages/profile')
+        if(response.auth){
+          localStorage.setItem("user",JSON.stringify(response.user));   
+          localStorage.setItem("token",JSON.stringify(response.auth));   
+          response.result? "":router.push('/pages/profile')
+        }
     }
     return(
         <section className='signup_section'>

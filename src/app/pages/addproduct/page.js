@@ -26,6 +26,7 @@ export default function AddProduct() {
       body: JSON.stringify(userData),
       headers: {
         "Content-Type": "application/json",
+        "authorization": `Bearer ${JSON.parse(localStorage.getItem('token'))}`
       },
     });
     const response = await result.json();
@@ -83,7 +84,7 @@ export default function AddProduct() {
           </div>
 
           <button type="submit" onClick={collectData} className="btn-signup">
-            Sign Up
+            Add Product
           </button>
         </form>
       </div>

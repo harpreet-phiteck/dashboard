@@ -10,28 +10,40 @@ export default function Productlist(){
 },[])
     const searchData = (e)=>{
         console.log(e.target.value);
-        fetch('http://localhost:5500/search/'+e.target.value)
-        .then((response) => response.json())
-        .then((products) =>{
-            updateProducts(products)
-            console.log(products)
-        })
+        let key = e.target.value
+        if(key){
+            fetch('http://localhost:5500/search/'+key,{
+                headers:{authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
+            })
+            .then((response) => response.json())
+            .then((response) =>{
+                if(response){
+                    updateProducts([response])
+                }else{
+                    console.log({message:'product not found'})
+                }
+            })
+        }else{
+            fetchProducts()
+        }      
     }
     const fetchProducts = () =>{
-        fetch('http://localhost:5500/productlist')
+        fetch('http://localhost:5500/productlist',{
+            headers:{authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
+        })
         .then((response) => response.json())
         .then((products) =>{
-            updateProducts(products)
-            console.log(products)
+            updateProducts(products)          
         })
     }
         const deleteProduct = async(id)=>{
             const deleteProduct = await fetch('http://localhost:5500/deleteproduct/'+id,
             {
                 method: 'DELETE',
-            }
-            )
-            const result = await deleteProduct.json()
+                headers:{authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
+            });
+
+            const result = await deleteProduct.json() 
             fetchProducts()
             console.log(result)
         }

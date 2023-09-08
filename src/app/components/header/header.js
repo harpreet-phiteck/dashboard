@@ -6,10 +6,8 @@ import { usePathname } from 'next/navigation'
 export default function Header(){
   const router = useRouter()
   const login = localStorage.getItem("user")
-  console.log(login)
   const navSignup = ()=>{
-    localStorage.removeItem('user')
-    console.log('user deleted')
+    localStorage.removeItem('user')  
       router.push('/pages/signup')
   }
   const path  = usePathname()
