@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "nodemon db/index.js",
+    "start": "node db/index.js",
     "lint": "next lint"
   },
   "dependencies": {
