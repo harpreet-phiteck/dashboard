@@ -13,7 +13,7 @@ export default function Productlist(){
         let key = e.target.value
         if(key){
             fetch('http://localhost:5500/search/'+key,{
-                headers:{authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
+                headers:{"authorization": `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
             })
             .then((response) => response.json())
             .then((response) =>{
@@ -29,7 +29,7 @@ export default function Productlist(){
     }
     const fetchProducts = () =>{
         fetch('http://localhost:5500/productlist',{
-            headers:{authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
+            headers:{"authorization": `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
         })
         .then((response) => response.json())
         .then((products) =>{
@@ -40,7 +40,7 @@ export default function Productlist(){
             const deleteProduct = await fetch('http://localhost:5500/deleteproduct/'+id,
             {
                 method: 'DELETE',
-                headers:{authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
+                headers:{"authorization": `Bearer ${JSON.parse(localStorage.getItem('token'))}`}
             });
 
             const result = await deleteProduct.json() 
